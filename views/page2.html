@@ -1,0 +1,55 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/css/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="/css/bootstrap-3.3.7-dist/css/jquery-3.1.0.js"></script>
+
+    <link rel="stylesheet" href="/images/index.css">
+</head>
+<body>
+<header>
+    <nav>
+        <title>Page2</title>
+        <center><h1>Ansis Homework to do list</h1></center>
+        <center><h2>Page2</h2></center>
+        <ul>
+            <li><a href="index.html">Home</a> </li>
+            <li>Page2</li>
+            <li><a href="page3.html">Page3</a> </li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="well ">
+            <form class="form">
+                <div class="form-group">
+                    <label class="control-label"><em>Email</em></label>
+                    <input class="form-control" type="text">
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label">Pasword</label>
+                    <input class="form-control" type="password">
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script language="JavaScript">
+    function check(form) {
+        if(form.Email.value == "123" && form.Password.value == "1234") {
+            window.open('todolist.html', 'self')
+        }
+        else {
+            alert("Error password or username") && window.open(index.html)
+        }
+    }
+</script>
+</body>
+</html>
