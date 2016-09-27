@@ -4,10 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var app            =         express();
 
+var authenticate = require('./routes/authenticate')
 var routes = require('./routes/index');
-var users = require('./routes/page3');
-var todolist = require('./routes/todolist');
+//var todolist = require('./routes/todolist');
 var page2 = require('./routes/page2');
 var page3 = require('./routes/page3');
 var homepage = require('./routes/homepage');
@@ -29,10 +30,19 @@ app.use(express.static((__dirname, 'public')));
 
 
 app.use('/', routes);
-app.use('/todolist.html', todolist);
+//app.use('/todolist.html', todolist);
 app.use('/page2.html', page2);
 app.use('/page3.html', page3);
 app.use('/index.html', homepage);
+app.use('/todolist.html', authenticate);
+
+
+app.post('/todolist.html',function(req,res){
+    var user_name=req.body.user;
+    var password=req.body.password;
+    console.log("User name = "+user_name+", password is "+password);
+    res.render('todolist');
+});
 
 // catch 404 and forward to error.html handler
 app.use(function(req, res, next) {

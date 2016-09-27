@@ -12,12 +12,26 @@
     <header>
         <nav>
 <title>Ansis Homework</title>
+<script>
+    $(document).ready(function() {
+        var user, pass;
+        $("#submit").click(function(){
+            user=$("#user").val();
+            pass=$("#password").val();
+            $.post("http://localhost:8888/login",{user: user,password: pass}, function(data) {
+                if (data === 'done') {
+                    alert("login success");
+                }
+            });
+        });
+    });
+</script>
+
 <center><h1>Ansis Homework to do list</h1></center>
 <ul>
     <li>Home</li>
     <li><a href="page2.html">Page2</a> </li>
     <li><a href="page3.html">Page3</a> </li>
-    <li><a href="todolist.html">ToDoList</a></li>
 </ul>
         </nav>
     </header>
@@ -27,37 +41,39 @@
     <div class="row">
         <div class="well ">
             <form class="form">
+
+                <form action="/login" method="post">
+
                 <div class="form-group">
                     <label class="control-label"><em>Email</em></label>
-                    <input class="form-control" name="Email" type="text">
+                    <input class="form-control" name="Email" type="text" id="user1">
                 </div>
 
                 <div class="form-group">
                     <label class="control-label">Password</label>
-                    <input class="form-control" name="Password" type="password">
+                    <input class="form-control" name="Password" type="password" id="password1">
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" onclick="check(this.form)" class="btn btn-default">
+                    <input type="submit" onclick="check(this.form)" class="btn btn-default" id="submit1" name="submit">
                 </div>
+
+                </form>
+
             </form>
         </div>
     </div>
 </div>
-<script language="JavaScript">
-    function check(form) {
-       if(form.Email.value == "123" && form.Password.value == "1234") {
-      window.open('todolist.html', 'self')
-       }
-       else {
-           alert("Error password or username") && window.open(index.html)
-       }
-    }
-</script>
 <p>Izmeginajuma teksts</p>
 <p class="secondary">Izmeginajuma teksts</p>
 <p class="third">Izmeginajuma teksts</p> <br/>
-<img src="/public/images/cms%20web.gif"/>
+<form action="/todolist.html" method="post">
+    <input type="text" name="username" id="user">
+    <input type="password" name="password" id="password">
+    <input type="submit" name="submit" id="submit">
+</form>
+
+
 <footer>@My Footer</footer>
 </body>
 </html>
