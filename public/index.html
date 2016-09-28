@@ -1,0 +1,54 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/css/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="/css/bootstrap-3.3.7-dist/css/jquery-3.1.0.js"></script>
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Ansis Homework</title>
+</head>
+<body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#login-form").submit(function (event) {
+            var email = $("#user").val();
+            var password = $("#password").val();
+            $.post("http://localhost:3000/login", {email: email, password: password}, function(res) {
+                console.log(res);
+                if (res.authenticated === 1) {
+                    window.location.pathname = '/todolist.html'
+                }
+            }).fail(function (res) {console.log(res);});
+
+            event.preventDefault();
+        });
+    });
+</script>
+
+<center><h1>Ansis Homework to do list</h1></center>
+
+<div class="container">
+    <div class="row">
+        <div class="well">
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="control-label"><em>Email</em></label>
+                    <input class="form-control" name="email" type="text" id="user">
+                    <p class="help-block">email: ansis.kengis@homework.com</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Password</label>
+                    <input class="form-control" name="password" type="password" id="password">
+                    <p class="help-block">password: pass123</p>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" id="submit" name="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer>@My Footer</footer>
+</body>
+</html>
